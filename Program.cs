@@ -1,6 +1,7 @@
-﻿using System.Buffers;
+﻿
+using System.Reflection;
 
-namespace Cronometro
+namespace texteditor
 {
     class Program
     {
@@ -22,7 +23,7 @@ namespace Cronometro
             switch (option)
             {
                 case 1:
-
+                    Abrir();
                     break;
                 case 2:
                     Editar();
@@ -33,6 +34,20 @@ namespace Cronometro
             }
         }
 
+        public static void Abrir()
+        {
+            Console.Clear();
+            Console.WriteLine("Qual o caminho do arquivo?");
+            var path = Console.ReadLine();
+
+            using (var file = new StreamReader(path))
+            {
+                string text = file.ReadToEnd();
+                Console.WriteLine(text);
+            }
+
+            VoltarMenu();
+        }
         public static void Editar()
         {
             Console.Clear();
@@ -69,6 +84,12 @@ namespace Cronometro
             }
 
             Console.WriteLine($"Arquivo salvo em {path} com sucesso !");
+            VoltarMenu();
+
+        }
+
+        public static void VoltarMenu()
+        {
             Console.WriteLine("Prescione alguma tecla para voltar ao menu...");
             Console.ReadKey();
             Menu();
