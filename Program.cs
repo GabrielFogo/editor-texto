@@ -67,6 +67,11 @@ namespace Cronometro
             {
                 file.Write(text);
             }
+
+            Console.WriteLine($"Arquivo salvo em {path} com sucesso !");
+            Console.WriteLine("Prescione alguma tecla para voltar ao menu...");
+            Console.ReadKey();
+            Menu();
         }
 
     }
