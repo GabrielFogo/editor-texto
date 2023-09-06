@@ -22,11 +22,11 @@ namespace Cronometro
             switch (option)
             {
                 case 1:
+
+                    break;
+                case 2:
                     Editar();
                     break;
-                // case 2:
-                //     Criar();
-                //     break;
                 case 3:
                     System.Environment.Exit(0);
                     break;
@@ -44,9 +44,29 @@ namespace Cronometro
             {
                 text += Console.ReadLine();
                 text += Environment.NewLine;
-            } while (Console.ReadKey().Key != ConsoleKey.Escape);
 
-            Console.WriteLine(text);
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
+            Console.WriteLine("A");
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Deseja Salvar ? (S - sim / N -Não)");
+            string resposta = Console.ReadLine().ToLower();
+
+            if (resposta == "s")
+                Salvar(text);
+            else
+                Menu();
+
+        }
+
+        public static void Salvar(string text)
+        {
+            Console.WriteLine("Qual é o caminho para salvar o seu arquivo");
+            var path = Console.ReadLine();
+
+            using (var file = new StreamWriter(path))
+            {
+                file.Write(text);
+            }
         }
 
     }
