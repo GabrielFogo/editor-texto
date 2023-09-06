@@ -22,16 +22,32 @@ namespace Cronometro
             switch (option)
             {
                 case 1:
-                    // Abrir();
+                    Editar();
                     break;
-                case 2:
-                    // Criar();
-                    break;
+                // case 2:
+                //     Criar();
+                //     break;
                 case 3:
                     System.Environment.Exit(0);
                     break;
             }
         }
 
-}
+        public static void Editar()
+        {
+            Console.Clear();
+            Console.WriteLine("Digite seu texto abaixo (ESC para sair)");
+            Console.WriteLine("----------------------------------------");
+            string text = "";
+
+            do
+            {
+                text += Console.ReadLine();
+                text += Environment.NewLine;
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
+
+            Console.WriteLine(text);
+        }
+
+    }
 }
